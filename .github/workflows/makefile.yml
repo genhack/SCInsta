@@ -57,6 +57,7 @@ jobs:
       - name: Install Pyzule
         run: |
           git clone --recurse-submodules https://github.com/asdfzxcvbn/pyzule
+          cd pyzule
           ./install-pyzule.sh
       
       - name: Set PATH environment variable
