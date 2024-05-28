@@ -52,10 +52,12 @@ jobs:
           submodules: recursive
 
       - name: Install Dependencies
-        run: brew install ldid dpkg make python3
+        run: brew install ldid dpkg make 
 
       - name: Install Pyzule
-        run:  pip3 install pyzule
+        run: |
+          git clone --recurse-submodules https://github.com/asdfzxcvbn/pyzule
+          ./install-pyzule.sh
       
       - name: Set PATH environment variable
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH 
