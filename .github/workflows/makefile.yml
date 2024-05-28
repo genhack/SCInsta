@@ -139,10 +139,8 @@ jobs:
           
           ls -l $GITHUB_WORKSPACE/SCInsta/packages
           
-          if [[ -f $GITHUB_WORKSPACE/SCInsta/packages/SCInsta-*.ipa ]]; then
-            echo "IPA file found for sideloaded"
-            IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/SCInsta-*.ipa
-          else
+          IPA_PATH=$(ls $GITHUB_WORKSPACE/SCInsta/packages/SCInsta-*.ipa)
+          if [[ -z "$IPA_PATH" ]]; then
             echo "No IPA file found"
             exit 1
           fi
