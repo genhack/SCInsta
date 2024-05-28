@@ -102,7 +102,7 @@ jobs:
           
       - name: Clone SCInsta Repo
         run: |
-          git clone --recurse-submodules https://github.com/zeuikli/SCInsta
+          git clone --recurse-submodules https://github.com/SoCuul/SCInsta
           pwd
           mkdir -p packages
       - name: Prepare Instagram IPA
