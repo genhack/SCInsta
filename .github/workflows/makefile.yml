@@ -119,7 +119,7 @@ jobs:
           echo "IPA File: $ipaFile"
           ls -l
           
-          ./build.sh
+          ./build.sh sideload
           
         env:
           THEOS: ${{ github.workspace }}/theos
