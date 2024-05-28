@@ -137,13 +137,11 @@ jobs:
           
           ./build.sh ${{ github.event.inputs.release_type }}
           
-          if [[ -f $GITHUB_WORKSPACE/SCInsta/packages/SCInsta-rootful.ipa ]]; then
-            echo "IPA file found for rootful"
-            IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/SCInsta-rootful.ipa
-          elif [[ -f $GITHUB_WORKSPACE/SCInsta/packages/SCInsta-rootless.ipa ]]; then
-            echo "IPA file found for rootless"
-            IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/SCInsta-sideloaded.ipa
+          ls -l $GITHUB_WORKSPACE/SCInsta/packages
+          
+          if [[ -f $GITHUB_WORKSPACE/SCInsta/packages/SCInsta-sideloaded.ipa ]]; then
             echo "IPA file found for sideloaded"
+            IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/SCInsta-sideloaded.ipa
           else
             echo "No IPA file found"
             exit 1
