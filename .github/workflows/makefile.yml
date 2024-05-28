@@ -145,7 +145,7 @@ jobs:
             exit 1
           fi
           echo "IPA Path: $IPA_PATH"
-          echo "::set-output name=ipa_path::$IPA_PATH"
+          echo "IPA_PATH=$IPA_PATH" >> $GITHUB_ENV
           
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -155,7 +155,7 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
           name: SCInsta_${{ github.run_number }}
-          path: ${{ steps.build.outputs.ipa_path }}
+          path: $IPA_PATH
           if-no-files-found: error
 
       - name: Create Release
@@ -166,4 +166,5 @@ jobs:
         with:
           tag_name: v0.4.1
           name: v0.4.1
-          files: ${{ steps.build.outputs.ipa_path }}
+          files: $IPA_PATH
+          if-no-files-found: error
