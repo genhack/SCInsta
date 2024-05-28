@@ -124,6 +124,7 @@ jobs:
           Instagram_URL: ${{ inputs.decrypted_instagram_url }}
           
       - name: Build SCInsta tweak for sideloading (as IPA)
+        id: build
         run: |
           PROJECT_PATH=$GITHUB_WORKSPACE/SCInsta/
           cd $PROJECT_PATH
@@ -136,17 +137,19 @@ jobs:
           
           ./build.sh ${{ github.event.inputs.release_type }}
           
-          if [[ -f $GITHUB_WORKSPACE/SCInsta/packages/SCInsta-sideloaded.ipa ]]; then
+          if [[ -f $GITHUB_WORKSPACE/SCInsta/packages/SCInsta-rootful.ipa ]]; then
             echo "IPA file found for rootful"
-            IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/SCInsta-sideloaded.ipa
-          elif [[ -f $GITHUB_WORKSPACE/SCInsta/packages/rootless/SCInsta-sideloaded.ipa ]]; then
+            IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/SCInsta-rootful.ipa
+          elif [[ -f $GITHUB_WORKSPACE/SCInsta/packages/rootless/SCInsta-rootless.ipa ]]; then
             echo "IPA file found for rootless"
             IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/rootless/SCInsta-sideloaded.ipa
+            echo "IPA file found for sideloaded"
           else
             echo "No IPA file found"
             exit 1
           fi
-          echo "IPA Path: ${{ steps.build.outputs.ipa_path }}"
+          echo "IPA Path: $IPA_PATH"
+          echo "::set-output name=ipa_path::$IPA_PATH"
           
         env:
           THEOS: ${{ github.workspace }}/theos
