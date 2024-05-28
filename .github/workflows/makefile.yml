@@ -104,10 +104,10 @@ jobs:
         run: |
           git clone --recurse-submodules https://github.com/SoCuul/SCInsta
           pwd
-          mkdir -p packages
+          mkdir -p ${{ github.workspace }}/SCInsta/packages
       - name: Prepare Instagram IPA
         run: |
-          wget "$Instagram_URL" --no-verbose -O ${{ github.workspace }}/packages/com.burbn.instagram.ipa
+          wget "$Instagram_URL" --no-verbose -O ${{ github.workspace }}/SCInsta/packages/com.burbn.instagram.ipa
           
         env:
           THEOS: ${{ github.workspace }}/theos
