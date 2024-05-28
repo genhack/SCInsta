@@ -136,6 +136,18 @@ jobs:
           
           ./build.sh ${{ github.event.inputs.release_type }}
           
+          if [[ -f $GITHUB_WORKSPACE/SCInsta/packages/SCInsta-sideloaded.ipa ]]; then
+          echo "IPA file found for rootful"
+          IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/SCInsta-sideloaded.ipa
+          elif [[ -f $GITHUB_WORKSPACE/SCInsta/packages/rootless/SCInsta-sideloaded.ipa ]]; then
+          echo "IPA file found for rootless"
+          IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/rootless/SCInsta-sideloaded.ipa
+          else
+          echo "No IPA file found"
+          exit 1
+          fi
+          echo "IPA Path: $IPA_PATH"
+          
         env:
           THEOS: ${{ github.workspace }}/theos
 
@@ -144,7 +156,7 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
           name: SCInsta_${{ github.run_number }}
-          path: $GITHUB_WORKSPACE/SCInsta/packages/*.ipa
+          path: ${{ env.IPA_PATH }}
           if-no-files-found: error
 
       - name: Create Release
@@ -155,4 +167,4 @@ jobs:
         with:
           tag_name: v0.4.1
           name: v0.4.1
-          files: $GITHUB_WORKSPACE/SCInsta/packages/*.ipa
+          files: ${{ env.IPA_PATH }}
