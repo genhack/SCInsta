@@ -1,6 +1,6 @@
 # SCInsta
 A feature-rich tweak for Instagram on iOS!\
-`Version v0.4.1` | `Tested on Instagram v330.0.0`
+`Version v0.4.1` | `Tested on Instagram v332.0.2.29.94` | `28\05\24 #Gen`
 
 
 # Features
@@ -57,9 +57,10 @@ A feature-rich tweak for Instagram on iOS!\
 ## Sideloading
 
 Best ways: 
-- [Esign] + Free certficate (no notifications) || [Esign] + [UDID Registrations](https://www.udidregistrations.com/buy)  (with notifications*) ($9.99/year, Receives notifications)
-
+- [Esign] + Free certficate (7 days and no notifications) || [Esign] + [UDID Registrations](https://www.udidregistrations.com/buy)  (with notifications*) ($9.99/year, Receives notifications)
  
+                                                         `OR`
+  
 - [AltStore](https://altstore.io/#Downloads) (Free, No notifications*) *Notifications require $99/year Apple Developer Program
 - [Sideloadly](https://sideloadly.io/#download) (Free, No notifications*) *Notifications require $99/year Apple Developer Program
 - [Signulous](https://www.signulous.com/register) ($19.99/year, Receives notifications)
