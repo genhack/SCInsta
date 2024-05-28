@@ -140,9 +140,9 @@ jobs:
           if [[ -f $GITHUB_WORKSPACE/SCInsta/packages/SCInsta-rootful.ipa ]]; then
             echo "IPA file found for rootful"
             IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/SCInsta-rootful.ipa
-          elif [[ -f $GITHUB_WORKSPACE/SCInsta/packages/rootless/SCInsta-rootless.ipa ]]; then
+          elif [[ -f $GITHUB_WORKSPACE/SCInsta/packages/SCInsta-rootless.ipa ]]; then
             echo "IPA file found for rootless"
-            IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/rootless/SCInsta-sideloaded.ipa
+            IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/SCInsta-sideloaded.ipa
             echo "IPA file found for sideloaded"
           else
             echo "No IPA file found"
