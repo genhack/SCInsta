@@ -2,16 +2,6 @@
 A feature-rich tweak for Instagram on iOS!\
 `Version v0.4.1` | `Tested on Instagram v330.0.0`
 
----
-
-> [!NOTE]
-> ❓ &nbsp;If you have any questions or need help with the tweak, visit the [Discussions](https://github.com/SoCuul/SCInsta/discussions) tab
->
-> ✨ &nbsp;If you have a feature request, [click here](https://github.com/SoCuul/SCInsta/issues/new?labels=enhancement&title=feat:%20replace%20this%20text%20with%20your%20feature%20request)\
-> 🐛 &nbsp;If you have a bug report, [click here](https://github.com/SoCuul/SCInsta/issues/new?labels=bug&title=bug:%20replace%20this%20with%20a%20summary%20of%20the%20issue%20you're%20experiencing)
-> 
-
----
 
 # Features
 ### General
@@ -60,31 +50,16 @@ A feature-rich tweak for Instagram on iOS!\
 ### Built-in Tweak Settings
 > Long press on the **large Instagram logo** at the top of your feed to bring up the SCInsta tweak settings
 
-# Building
-## Prerequisites
-- XCode + Command-Line Developer Tools
-- [Homebrew](https://brew.sh/#install)
-- [CMake](https://formulae.brew.sh/formula/cmake#default) (`brew install cmake`)
-- [Theos](https://theos.dev/docs/installation)
-- [pyzule](https://github.com/asdfzxcvbn/pyzule?tab=readme-ov-file#installation) **\*only required for sideloading**
+## Run Github ACTION for RootFull || RootLess versions || Sideload. requires the decrypted original IPA.
 
-## Setup
-1. Install iOS 14.5 frameworks for theos
-   1. [Click to download iOS SDKs](https://github.com/xybp888/iOS-SDKs/archive/refs/heads/master.zip)
-   2. Unzip, then copy the `iPhoneOS14.5.sdk` folder into `~/theos/sdks`
-2. Clone SCInsta repo from GitHub: `git clone --recurse-submodules https://github.com/SoCuul/SCInsta --branch v0.4.1`
-3. **For sideloading**: Download a decrypted Instagram IPA from a trusted source, making sure to rename it to `com.burbn.instagram.ipa`.
-   Then create a folder called `packages` inside of the `SCInsta` folder, and move the Instagram IPA file into it. 
 
-## Run build script
-```sh
-$ chmod +x build.sh
-$ ./build.sh <sideload/rootless/rootful>
-```
 
 ## Sideloading
-After building the tweak for sideloading, you can install the tweaked IPA file like any other sideloaded iOS app. If you have not done this before, here are some suggestions to get started.
 
+Best ways: 
+- [Esign] + Free certficate (no notifications) || [Esign] + [UDID Registrations](https://www.udidregistrations.com/buy)  (with notifications*) ($9.99/year, Receives notifications)
+
+ 
 - [AltStore](https://altstore.io/#Downloads) (Free, No notifications*) *Notifications require $99/year Apple Developer Program
 - [Sideloadly](https://sideloadly.io/#download) (Free, No notifications*) *Notifications require $99/year Apple Developer Program
 - [Signulous](https://www.signulous.com/register) ($19.99/year, Receives notifications)
