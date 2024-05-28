@@ -127,25 +127,24 @@ jobs:
         id: build
         run: |
           PROJECT_PATH=$GITHUB_WORKSPACE/SCInsta/
-          cd $PROJECT_PATH
+          IPA_PATH=$GITHUB_WORKSPACE/SCInsta/packages/
           
+          cd $PROJECT_PATH
           CMAKE_OSX_ARCHITECTURES="arm64e;arm64"
           
-          ipaFile="$GITHUB_WORKSPACE/SCInsta/packages/com.burbn.instagram.ipa"
-          echo "IPA File: $ipaFile"
-          ls -l
-          
+          ipaFile="$IPA_PATH/com.burbn.instagram.ipa"
+          echo "IPA File: $ipaFile"          
           ./build.sh ${{ github.event.inputs.release_type }}
           
-          ls -l $GITHUB_WORKSPACE/SCInsta/packages
+          ls -l $IPA_PATH/
           
-          IPA_PATH=$(ls $GITHUB_WORKSPACE/SCInsta/packages/SCInsta-*.ipa)
-          if [[ -z "$IPA_PATH" ]]; then
+          IPA_FILE=$(ls $IPA_PATH/SCInsta-*.ipa)
+          if [[ -z "$IPA_FILE" ]]; then
             echo "No IPA file found"
             exit 1
           fi
-          echo "IPA Path: $IPA_PATH"
-          echo "IPA_PATH=$IPA_PATH" >> $GITHUB_ENV
+          
+          echo "IPA_FILE=$IPA_FILE" >> $GITHUB_ENV
           
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -155,7 +154,7 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
           name: SCInsta_${{ github.run_number }}
-          path: $IPA_PATH
+          path: ${{ env.IPA_FILE }}
           if-no-files-found: error
 
       - name: Create Release
@@ -166,5 +165,5 @@ jobs:
         with:
           tag_name: v0.4.1
           name: v0.4.1
-          files: $IPA_PATH
+          files: ${{ env.IPA_FILE }}
           if-no-files-found: error
