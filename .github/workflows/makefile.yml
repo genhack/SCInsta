@@ -3,6 +3,11 @@ name: Build and Package SCInsta
 on:
   workflow_dispatch:
     inputs:
+      release_type:
+        description: "Set the type of Release sideload\rootfull\rootless"
+        default: ""
+        required: true
+        type: string  
       decrypted_instagram_url:
         description: "The direct URL to the decrypted Instagram IPA"
         default: ""
@@ -110,16 +115,16 @@ jobs:
           
       - name: Build SCInsta tweak for sideloading (as IPA)
         run: |
-          PROJECT_PATH=/Users/runner/work/SCInsta/SCInsta/SCInsta/
+          PROJECT_PATH=$GITHUB_WORKSPACE/SCInsta/SCInsta/
           cd $PROJECT_PATH
           
           CMAKE_OSX_ARCHITECTURES="arm64e;arm64"
           
-          ipaFile="/Users/runner/work/SCInsta/SCInsta/packages/com.burbn.instagram.ipa"
+          ipaFile="$GITHUB_WORKSPACE/SCInsta/packages/com.burbn.instagram.ipa"
           echo "IPA File: $ipaFile"
           ls -l
           
-          ./build.sh sideload
+          ./build.sh ${{ github.event.inputs.release_type }}
           
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -129,7 +134,7 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
           name: SCInsta_${{ github.run_number }}
-          path: /Users/runner/work/SCInsta/SCInsta/SCInsta/packages/SCInsta-sideloaded.ipa
+          path: $GITHUB_WORKSPACE/SCInsta/packages/SCInsta-sideloaded.ipa
           if-no-files-found: error
 
       - name: Create Release
@@ -140,4 +145,4 @@ jobs:
         with:
           tag_name: v0.4.1
           name: v0.4.1
-          files: /Users/runner/work/SCInsta/SCInsta/SCInsta/packages/*.ipa
+          files: $GITHUB_WORKSPACE/SCInsta/packages/*.ipa
