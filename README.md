@@ -50,9 +50,8 @@ A feature-rich tweak for Instagram on iOS!\
 ### Built-in Tweak Settings
 > Long press on the **large Instagram logo** at the top of your feed to bring up the SCInsta tweak settings
 
-## Run Github ACTION for RootFull || RootLess versions || Sideload. requires the decrypted original IPA.
-
-
+## Run Github ACTION for RootFull || RootLess versions || Sideload.
+   Requires the decrypted original IPA.
 
 ## Sideloading
 
